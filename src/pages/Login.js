@@ -4,10 +4,13 @@ import {
   Col, Button, ControlLabel, Alert, Grid, Row
 } from 'react-bootstrap'
 import AuthenticationService from '../components/AuthenticationService'
+import UiCfg from '../components/UiUrlCfg'
 
 export default class Login extends Component {
   constructor () {
     super()
+
+    this.uiCfg = new UiCfg()
 
     this.state = {
       errorMessage: ''
@@ -74,7 +77,7 @@ export default class Login extends Component {
 
     this.authSvc.login(this.state.username, this.state.password)
       .then(res => {
-        this.props.history.replace('/')
+        this.props.history.replace(this.uiCfg.newApp())
       })
       .catch(err => {
         this.setState({ errorMessage: err.response.data })

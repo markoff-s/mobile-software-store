@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavItem, Nav, Grid, Row, Col } from 'react-bootstrap'
+import { NavItem, Nav } from 'react-bootstrap'
 
 export default class CategoriesList extends Component {
   constructor () {

@@ -9,6 +9,7 @@ export default class AuthenticationService {
     this.fetch = this.fetch.bind(this)
     this.login = this.login.bind(this)
     this.getProfile = this.getProfile.bind(this)
+    // this.getAuthorizationHeader = this.getAuthorizationHeader.bind(this)
   }
 
   login (username, password) {
@@ -53,6 +54,14 @@ export default class AuthenticationService {
     const token = this.getToken()
     return token == null ? '' : decode(this.getToken())
   }
+
+  // getAuthorizationHeader () {
+  //   const header = {
+  //     'Authorization': 'Bearer ' + this.getToken()
+  //   }
+
+  //   return header
+  // }
 
   fetch (url, options) {
     const headers = {

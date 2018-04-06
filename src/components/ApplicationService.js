@@ -1,9 +1,11 @@
 import {get} from 'axios'
 import Cfg from '../components/ApiUrlCfg'
+import AuthenticationService from './AuthenticationService'
 
 export default class ApplicationService {
   constructor () {
     this.cfg = new Cfg()
+    this.authSvc = new AuthenticationService()
 
     this.getTop = this.getTop.bind(this)
     this.getApplicationById = this.getApplicationById.bind(this)

@@ -1,4 +1,4 @@
-import axios, { get } from 'axios'
+import { get } from 'axios'
 import Cfg from '../components/ApiUrlCfg'
 
 export default class CategoriesService {

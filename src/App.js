@@ -29,7 +29,7 @@ export default class App extends Component {
             <Route exact path={this.home} component={Home} />
             <Route path={this.login} component={Login} />
             <Route path={this.logout} component={Logout} />
-            <Route path={this.newApp} component={NewApplication} />
+            <Route path={this.newApp} component={withAuth(NewApplication)} />
             <Route path={this.appDetails} component={ApplicationDetails} />
             <Route render={() => (<h2>404 Not found</h2>)} />
           </Switch>

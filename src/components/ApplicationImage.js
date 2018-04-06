@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Col } from 'react-bootstrap'
 import Cfg from './UiUrlCfg'
 
 export default class ApplicationImage extends Component {

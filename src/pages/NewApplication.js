@@ -4,6 +4,7 @@ import { Button, Grid, Row, Col, SplitButton, MenuItem, FormGroup, FormControl, 
 
 import CategoriesService from '../components/CategoriesService'
 import ApplicationService from '../components/ApplicationService'
+import AuthenticationService from '../components/AuthenticationService'
 import UiCfg from '../components/UiUrlCfg'
 import ApiCfg from '../components/ApiUrlCfg'
 
@@ -13,6 +14,7 @@ export default class NewApplication extends Component {
 
     this.categoriesService = new CategoriesService()
     this.appService = new ApplicationService()
+    this.authSvc = new AuthenticationService()
     this.uiCfg = new UiCfg()
     this.apiCfg = new ApiCfg()
 
@@ -41,8 +43,6 @@ export default class NewApplication extends Component {
         this.props.history.replace(this.uiCfg.appDetails(appId))
       }
     }).catch(err => {
-      // console.log(err)
-      // alert(err.response.data.message)
       this.setState({ errorMessage: err.response.data.message })
     })
   }
@@ -54,11 +54,15 @@ export default class NewApplication extends Component {
     formData.append('categoryId', this.state.selectedCategoryId)
     formData.append('description', this.state.description)
     formData.append('file', file)
+
+    const token = this.authSvc.getToken()
     const config = {
       headers: {
-        'content-type': 'multipart/form-data'
+        'content-type': 'multipart/form-data',
+        'Authorization': 'Bearer ' + token
       }
     }
+
     return post(url, formData, config)
   }
 
